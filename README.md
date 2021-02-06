@@ -45,13 +45,10 @@ with:
 
 ## Install
 
-With `pip`:
+
 
     pip install igwp
     
-With `conda`:
-
-    conda instal -c hydrocomputing igwp
 
 ## Plot all results
 
