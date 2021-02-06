@@ -15,7 +15,7 @@ setup_cfg = {o:cfg[o] for o in cfg_keys}
 
 licenses = {
     'apache2': ('Apache Software License 2.0','OSI Approved :: Apache Software License'),
-    'mit': ('License :: OSI Approved :: MIT License'),
+    'mit': ('MIT License', 'OSI Approved :: MIT License'),
 }
 statuses = [ '1 - Planning', '2 - Pre-Alpha', '3 - Alpha',
     '4 - Beta', '5 - Production/Stable', '6 - Mature', '7 - Inactive' ]
@@ -45,4 +45,3 @@ setuptools.setup(
     zip_safe = False,
     entry_points = { 'console_scripts': cfg.get('console_scripts','').split() },
     **setup_cfg)
-
