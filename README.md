@@ -42,12 +42,12 @@ With `conda`:
 This plots shows the differences between GWP, GWP*, and IGWP.
 
 ```python
-from igwp.core import get_emission_data_paths
+from igwp.core import get_emission_data_paths, make_gwps_improved
 from igwp.plotting import plot_all
 
 rcp_scenarios = get_emission_data_paths()
 
-plot_all(rcp_scenarios)
+plot_all(rcp_scenarios, make_df=make_gwps_improved)
 ```
 
 
@@ -89,8 +89,8 @@ df26.loc[2000:2020]
     <tr style="text-align: right;">
       <th></th>
       <th>$CH_4$ GWP</th>
-      <th>$CH_4$ GWP* flow only</th>
-      <th>$CH_4$ GWP* flow and stock</th>
+      <th>$CH_4$ GWP*</th>
+      <th>$CH_4$ IGWP</th>
     </tr>
     <tr>
       <th>Years</th>
@@ -266,8 +266,8 @@ df26.loc[2000:2010]
     <tr style="text-align: right;">
       <th></th>
       <th>$CH_4$ GWP</th>
-      <th>$CH_4$ GWP* flow only</th>
-      <th>$CH_4$ GWP* flow and stock</th>
+      <th>$CH_4$ GWP*</th>
+      <th>$CH_4$ IGWP</th>
     </tr>
     <tr>
       <th>Years</th>

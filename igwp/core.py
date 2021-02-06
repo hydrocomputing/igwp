@@ -138,8 +138,8 @@ def make_gwps_improved(file_name,
     # here's the meat
     e_co2_eq_star_mod = r * e_co2_eq_star + s * e_co2_eq
     e_co2_eq.name = '$CH_4$ GWP'
-    e_co2_eq_star.name = '$CH_4$ GWP* flow only'
-    e_co2_eq_star_mod.name = '$CH_4$ GWP* flow and stock'
+    e_co2_eq_star.name = '$CH_4$ GWP*'
+    e_co2_eq_star_mod.name = '$CH_4$ IGWP'
 
     df = pd.DataFrame([e_co2_eq, e_co2_eq_star, e_co2_eq_star_mod]).T
     df.index.name = 'Years'
