@@ -12,7 +12,8 @@ index = {"GWP100_CH4": "00_core.ipynb",
          "plot_one": "01_plotting.ipynb",
          "plot_all": "01_plotting.ipynb"}
 
-modules = ["core.py"]
+modules = ["core.py",
+           "plotting.py"]
 
 doc_url = "https://hydrocomputing.github.io/igwp/"
 
