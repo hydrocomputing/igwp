@@ -8,7 +8,9 @@ index = {"GWP100_CH4": "00_core.ipynb",
          "calc_gwpstar_emissions": "00_core.ipynb",
          "read_data": "00_core.ipynb",
          "make_gwps": "00_core.ipynb",
-         "make_gwps_improved": "00_core.ipynb"}
+         "make_gwps_improved": "00_core.ipynb",
+         "plot_one": "01_plotting.ipynb",
+         "plot_all": "01_plotting.ipynb"}
 
 modules = ["core.py"]
 
