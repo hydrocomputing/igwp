@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: igwp
       url: core.html
+    - output: web,pdf
+      title: Title
+      url: plotting.html
     output: web
     title: igwp
   output: web

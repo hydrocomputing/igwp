@@ -29,6 +29,295 @@ nb_path: "00_core.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Constants">Constants<a class="anchor-link" href="#Constants"> </a></h3><p>GWP_100 according to <a href="https://en.wikipedia.org/wiki/IPCC_Fifth_Assessment_Report">AR5</a></p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_emission_data_paths" class="doc_header"><code>get_emission_data_paths</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L19" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_emission_data_paths</code>(<strong><code>data_path</code></strong>=<em><code>None</code></em>)</p>
+</blockquote>
+<p>Get paths for emisson at file.</p>
+<p>:param: data_path - path to files, defaults to the <code>gwp/data</code>
+:returns: dict with scenario names as keys and paths to
+          data files as values</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="p">(</span><span class="n">get_emission_data_paths</span><span class="p">()</span> <span class="o">==</span>
+<span class="p">{</span><span class="s1">&#39;RCP 2.6&#39;</span><span class="p">:</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data/RCP3PD_EMISSIONS.csv&#39;</span><span class="p">),</span>
+ <span class="s1">&#39;RCP 4.5&#39;</span><span class="p">:</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data/RCP45_EMISSIONS.csv&#39;</span><span class="p">),</span>
+ <span class="s1">&#39;RCP 6&#39;</span><span class="p">:</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data/RCP6_EMISSIONS.csv&#39;</span><span class="p">),</span>
+ <span class="s1">&#39;RCP 8.5&#39;</span><span class="p">:</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;data/RCP85_EMISSIONS.csv&#39;</span><span class="p">)})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AssertionError</span>                            Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-6-c25e6e358112&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> assert (get_emission_data_paths() ==
+</span><span class="ansi-green-intense-fg ansi-bold">      2</span> {&#39;RCP 2.6&#39;: Path(&#39;data/RCP3PD_EMISSIONS.csv&#39;),
+<span class="ansi-green-intense-fg ansi-bold">      3</span>  <span class="ansi-blue-fg">&#39;RCP 4.5&#39;</span><span class="ansi-blue-fg">:</span> Path<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;data/RCP45_EMISSIONS.csv&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>  <span class="ansi-blue-fg">&#39;RCP 6&#39;</span><span class="ansi-blue-fg">:</span> Path<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;data/RCP6_EMISSIONS.csv&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>  &#39;RCP 8.5&#39;: Path(&#39;data/RCP85_EMISSIONS.csv&#39;)})
+
+<span class="ansi-red-fg">AssertionError</span>: </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="calc_temp_increase" class="doc_header"><code>calc_temp_increase</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L42" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>calc_temp_increase</code>()</p>
+</blockquote>
+<p>Calculate temperature increase caused by Methane only</p>
+<p>This uses FaiR: <a href="https://github.com/OMS-NetZero/FAIR">https://github.com/OMS-NetZero/FAIR</a></p>
+<p>Returns a pandas DataFrame with columns RCP 2.6, RCP 4.5, RCP 6, RCP 8.5
+and rows with yearly data from 1765 to 2500.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">temps</span> <span class="o">=</span> <span class="n">calc_temp_increase</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="calc_gwpstar_emissions" class="doc_header"><code>calc_gwpstar_emissions</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L69" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>calc_gwpstar_emissions</code>(<strong><code>emissons</code></strong>, <strong><code>gwp_h</code></strong>=<em><code>28</code></em>, <strong><code>h</code></strong>=<em><code>100</code></em>, <strong><code>delt</code></strong>=<em><code>20</code></em>)</p>
+</blockquote>
+<p>Calculation of GWP* from GWP</p>
+<p>Based on Allen et. al 2018</p>
+<p>:param: emissons pandas Series with emission values, index is year
+:param: gwp_h GWP for <code>h</code> years
+:param: h time in years
+:param: delt delta tine in years
+:return: GWP*</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="read_data" class="doc_header"><code>read_data</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L87" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>read_data</code>(<strong><code>file_name</code></strong>, <strong><code>sep</code></strong>=<em><code>','</code></em>, <strong><code>skiprows</code></strong>=<em><code>36</code></em>, <strong><code>index_col</code></strong>=<em><code>0</code></em>, <strong><code>species</code></strong>=<em><code>'CH4'</code></em>, <strong><code>unit_converter</code></strong>=<em><code>0.001</code></em>)</p>
+</blockquote>
+<p>Read emssion data from a csv file.</p>
+<p>Per default reads Methane data from a file with the format of the
+files in <code>igwp/data</code>.
+These files are from FaiR: <a href="https://github.com/OMS-NetZero/FAIR">https://github.com/OMS-NetZero/FAIR</a></p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="make_gwps" class="doc_header"><code>make_gwps</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L100" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_gwps</code>(<strong><code>file_name</code></strong>, <strong><code>start_year</code></strong>=<em><code>1765</code></em>, <strong><code>end_year</code></strong>=<em><code>2500</code></em>, <strong><code>base_year</code></strong>=<em><code>1765</code></em>)</p>
+</blockquote>
+<p>Compute GWP_100, GWP*_100.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="make_gwps_improved" class="doc_header"><code>make_gwps_improved</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L115" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_gwps_improved</code>(<strong><code>file_name</code></strong>, <strong><code>start_year</code></strong>=<em><code>1765</code></em>, <strong><code>end_year</code></strong>=<em><code>2500</code></em>, <strong><code>base_year</code></strong>=<em><code>1765</code></em>, <strong><code>r</code></strong>=<em><code>0.75</code></em>, <strong><code>s</code></strong>=<em><code>0.25</code></em>)</p>
+</blockquote>
+<p>Compute GWP_100, GWP*_100, and IGWP_100.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
 </div>
  
 

@@ -2,9 +2,15 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"GWP100_CH4": "00_core.ipynb",
+         "get_emission_data_paths": "00_core.ipynb",
+         "calc_temp_increase": "00_core.ipynb",
+         "calc_gwpstar_emissions": "00_core.ipynb",
+         "read_data": "00_core.ipynb",
+         "make_gwps": "00_core.ipynb",
+         "make_gwps_improved": "00_core.ipynb"}
 
-modules = []
+modules = ["core.py"]
 
 doc_url = "https://hydrocomputing.github.io/igwp/"
 
