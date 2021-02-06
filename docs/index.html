@@ -35,7 +35,7 @@ nb_path: "index.ipynb"
 to "normalize" the warming impact of different climate pollutants to 
 $CO_2$ equivalents. This approach works well for long-lived climate 
 pollutants (LLCPs) but fails for short-lived climate pollutants (SLCPs).
-The improved version IGWP accounts much better for effect of SLCPs.</p>
+The improved version IGWP accounts much better for impacts of SLCPs.</p>
 <h2 id="Scientific-background">Scientific background<a class="anchor-link" href="#Scientific-background"> </a></h2><p>This project:</p>
 <ul>
 <li><p>is based on the findings in this paper: 
@@ -51,16 +51,18 @@ Retrieved from <a href="https://www.nature.com/articles/s41612-019-0086-4">https
 model FaIR: <a href="https://github.com/OMS-NetZero/FAIR">https://github.com/OMS-NetZero/FAIR</a></p>
 </li>
 </ul>
-<h3 id="The-maths">The maths<a class="anchor-link" href="#The-maths"> </a></h3><p>$IGWP = GWP_H * (r * \frac{\Delta E_{SLCP}}{\Delta t} * H + s * E_{SLCP})$</p>
+<h3 id="The-maths">The maths<a class="anchor-link" href="#The-maths"> </a></h3><p>{% raw %}
+$$IGWP = GWP_H * (r * \frac{\Delta E_{SLCP}}{\Delta t} * H + s * E_{SLCP})$$
+{% endraw %}</p>
 <p>with:</p>
 <ul>
 <li>$IGWP$ - Improved Global Warming Potential</li>
 <li>$GWP_H$ - Global Warming Potential for period $H$ (e.g. $GWP_{100}$ for 100 years)</li>
 <li>$H$ time-horizon (commonly 100 years)</li>
 <li>$r$ - flow term faction, found to be 0.75 with linear regression</li>
-<li>$s$ - stock term fraction, found to be 0.25 with linear regression, $r + s = 1$ </li>
+<li>$s$ - stock term fraction, found to be 0.25 with linear regression, condition: $r + s = 1$ </li>
 <li>$\Delta E_{SLCP}$ - change of rate of short-lived climate pollutant</li>
-<li>${\Delta t}$ - time difference for $\Delta E_{SLCP}$</li>
+<li>${\Delta t}$ - time difference for $\Delta E_{SLCP}$, typical value: 20 years</li>
 <li>$E_{SLCP}$ emission short-lived climate pollutant for investigated year</li>
 </ul>
 
@@ -360,7 +362,46 @@ model FaIR: <a href="https://github.com/OMS-NetZero/FAIR">https://github.com/OMS
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 
 <span class="n">additional_emssions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">2005</span><span class="p">,</span> <span class="mi">2006</span><span class="p">,</span> <span class="mi">2007</span><span class="p">])</span>
-<span class="n">df26</span> <span class="o">=</span> <span class="n">make_gwps_improved</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">paths</span><span class="p">[</span><span class="s1">&#39;RCP 2.6&#39;</span><span class="p">],</span> <span class="n">additional_emssions</span><span class="o">=</span><span class="n">additional_emssions</span><span class="p">)</span>
+<span class="n">additional_emssions</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;CH_4 [Gt/yr]&#39;</span>
+<span class="n">additional_emssions</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Year&#39;</span>
+<span class="n">additional_emssions</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Year
+2005    0.1
+2006    0.5
+2007    0.2
+Name: CH_4 [Gt/yr], dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df26</span> <span class="o">=</span> <span class="n">make_gwps_improved</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">paths</span><span class="p">[</span><span class="s1">&#39;RCP 2.6&#39;</span><span class="p">],</span> <span class="n">additional_emssions</span><span class="o">=</span><span class="n">additional_emssions</span><span class="p">)</span>
 <span class="n">df26</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2000</span><span class="p">:</span><span class="mi">2010</span><span class="p">]</span>
 </pre></div>
 
@@ -484,6 +525,13 @@ model FaIR: <a href="https://github.com/OMS-NetZero/FAIR">https://github.com/OMS
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice the different impacts of this $CH_4$ "flush" on these GWP models.</p>
+
+</div>
+</div>
+</div>
 </div>
  
 

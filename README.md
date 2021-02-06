@@ -8,7 +8,7 @@ The Global Warming Potential (GWP) is a commonly used, simple model
 to "normalize" the warming impact of different climate pollutants to 
 $CO_2$ equivalents. This approach works well for long-lived climate 
 pollutants (LLCPs) but fails for short-lived climate pollutants (SLCPs).
-The improved version IGWP accounts much better for effect of SLCPs.
+The improved version IGWP accounts much better for impacts of SLCPs.
 
 ## Scientific background
 
@@ -28,7 +28,9 @@ This project:
   
 ### The maths
 
-$IGWP = GWP_H * (r * \frac{\Delta E_{SLCP}}{\Delta t} * H + s * E_{SLCP})$
+{% raw %}
+$$IGWP = GWP_H * (r * \frac{\Delta E_{SLCP}}{\Delta t} * H + s * E_{SLCP})$$
+{% endraw %}
 
 with:
 
@@ -36,9 +38,9 @@ with:
 * $GWP_H$ - Global Warming Potential for period $H$ (e.g. $GWP_{100}$ for 100 years)
 * $H$ time-horizon (commonly 100 years)
 * $r$ - flow term faction, found to be 0.75 with linear regression
-* $s$ - stock term fraction, found to be 0.25 with linear regression, $r + s = 1$ 
+* $s$ - stock term fraction, found to be 0.25 with linear regression, condition: $r + s = 1$ 
 * $\Delta E_{SLCP}$ - change of rate of short-lived climate pollutant
-* ${\Delta t}$ - time difference for $\Delta E_{SLCP}$
+* ${\Delta t}$ - time difference for $\Delta E_{SLCP}$, typical value: 20 years
 * $E_{SLCP}$ emission short-lived climate pollutant for investigated year
 
 ## Install
@@ -256,6 +258,23 @@ Let's assume very strong increases of $CH_4$ emissions for the years 2005 throug
 import pandas as pd 
 
 additional_emssions = pd.Series([0.1, 0.5, 0.2], index=[2005, 2006, 2007])
+additional_emssions.name = 'CH_4 [Gt/yr]'
+additional_emssions.index.name = 'Year'
+additional_emssions
+```
+
+
+
+
+    Year
+    2005    0.1
+    2006    0.5
+    2007    0.2
+    Name: CH_4 [Gt/yr], dtype: float64
+
+
+
+```python
 df26 = make_gwps_improved(file_name=paths['RCP 2.6'], additional_emssions=additional_emssions)
 df26.loc[2000:2010]
 ```
@@ -364,3 +383,5 @@ df26.loc[2000:2010]
 </div>
 
 
+
+Notice the different impacts of this $CH_4$ "flush" on these GWP models.
