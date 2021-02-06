@@ -2,16 +2,15 @@
 > A Global Warming Potential model with improved support for short-lived climate pollutions (SLCPs).
 
 
-## Why an Improved Version
+## Why an improved version
 
 The Global Warming Potential (GWP) is a commonly used, simple model
 to "normalize" the warming impact of different climate pollutants to 
 $CO_2$ equivalents. This approach works well for long-lived climate 
-pollutions (LLCPs) but fails for short-lived climate pollutants (SLCPs).
-The improved version of the GWP accounts much better for effect of
-SLCPs.
+pollutants (LLCPs) but fails for short-lived climate pollutants (SLCPs).
+The improved version IGWP accounts much better for effect of SLCPs.
 
-## Sources
+## Scientific background
 
 This project:
 
@@ -26,6 +25,21 @@ This project:
 
 * and uses the simple emissions-based impulse response and carbon cycle 
   model FaIR: https://github.com/OMS-NetZero/FAIR
+  
+### The maths
+
+$IGWP = GWP_H * (r * \frac{\Delta E_{SLCP}}{\Delta t} * H + s * E_{SLCP})$
+
+with:
+
+* $IGWP$ - Improved Global Warming Potential
+* $GWP_H$ - Global Warming Potential for period $H$ (e.g. $GWP_{100}$ for 100 years)
+* $H$ time-horizon (commonly 100 years)
+* $r$ - flow term faction, found to be 0.75 with linear regression
+* $s$ - stock term fraction, found to be 0.25 with linear regression, $r + s = 1$ 
+* $\Delta E_{SLCP}$ - change of rate of short-lived climate pollutant
+* ${\Delta t}$ - time difference for $\Delta E_{SLCP}$
+* $E_{SLCP}$ emission short-lived climate pollutant for investigated year
 
 ## Install
 
@@ -53,6 +67,8 @@ plot_all(rcp_scenarios, make_df=make_gwps_improved)
 
 ![png](docs/images/output_4_0.png)
 
+
+This plot reproduces the Fig.1 in the paper descriobung IGWP (although with this name, https://www.nature.com/articles/s41612-019-0086-4).
 
 ## Show some values
 

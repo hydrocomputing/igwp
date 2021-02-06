@@ -31,13 +31,12 @@ nb_path: "index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-an-Improved-Version">Why an Improved Version<a class="anchor-link" href="#Why-an-Improved-Version"> </a></h2><p>The Global Warming Potential (GWP) is a commonly used, simple model
+<h2 id="Why-an-improved-version">Why an improved version<a class="anchor-link" href="#Why-an-improved-version"> </a></h2><p>The Global Warming Potential (GWP) is a commonly used, simple model
 to "normalize" the warming impact of different climate pollutants to 
 $CO_2$ equivalents. This approach works well for long-lived climate 
-pollutions (LLCPs) but fails for short-lived climate pollutants (SLCPs).
-The improved version of the GWP accounts much better for effect of
-SLCPs.</p>
-<h2 id="Sources">Sources<a class="anchor-link" href="#Sources"> </a></h2><p>This project:</p>
+pollutants (LLCPs) but fails for short-lived climate pollutants (SLCPs).
+The improved version IGWP accounts much better for effect of SLCPs.</p>
+<h2 id="Scientific-background">Scientific background<a class="anchor-link" href="#Scientific-background"> </a></h2><p>This project:</p>
 <ul>
 <li><p>is based on the findings in this paper: 
 Cain, M., Lynch, J., Allen, M.R., Fuglestedt, D.J. &amp; Macey, A.H. (2019).
@@ -51,6 +50,18 @@ Retrieved from <a href="https://www.nature.com/articles/s41612-019-0086-4">https
 <li><p>and uses the simple emissions-based impulse response and carbon cycle 
 model FaIR: <a href="https://github.com/OMS-NetZero/FAIR">https://github.com/OMS-NetZero/FAIR</a></p>
 </li>
+</ul>
+<h3 id="The-maths">The maths<a class="anchor-link" href="#The-maths"> </a></h3><p>$IGWP = GWP_H * (r * \frac{\Delta E_{SLCP}}{\Delta t} * H + s * E_{SLCP})$</p>
+<p>with:</p>
+<ul>
+<li>$IGWP$ - Improved Global Warming Potential</li>
+<li>$GWP_H$ - Global Warming Potential for period $H$ (e.g. $GWP_{100}$ for 100 years)</li>
+<li>$H$ time-horizon (commonly 100 years)</li>
+<li>$r$ - flow term faction, found to be 0.75 with linear regression</li>
+<li>$s$ - stock term fraction, found to be 0.25 with linear regression, $r + s = 1$ </li>
+<li>$\Delta E_{SLCP}$ - change of rate of short-lived climate pollutant</li>
+<li>${\Delta t}$ - time difference for $\Delta E_{SLCP}$</li>
+<li>$E_{SLCP}$ emission short-lived climate pollutant for investigated year</li>
 </ul>
 
 </div>
@@ -123,6 +134,13 @@ model FaIR: <a href="https://github.com/OMS-NetZero/FAIR">https://github.com/OMS
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This plot reproduces the Fig.1 in the paper descriobung IGWP (although with this name, <a href="https://www.nature.com/articles/s41612-019-0086-4">https://www.nature.com/articles/s41612-019-0086-4</a>).</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Show-some-values">Show some values<a class="anchor-link" href="#Show-some-values"> </a></h2><p>The results for the emissions based on GWP, GWP*, and IGWP for scenario RCP 2.6 for the years 2000 through 2020:</p>
