@@ -63,10 +63,13 @@ nb_path: "00_core.ipynb"
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="get_emission_data_paths" class="doc_header"><code>get_emission_data_paths</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L19" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_emission_data_paths</code>(<strong><code>data_path</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
-<p>Get paths for emisson at file.</p>
-<p>:param: data_path - path to files, defaults to the <code>gwp/data</code>
-:returns: dict with scenario names as keys and paths to
-          data files as values</p>
+
+<pre><code>Get paths for emisson at file.
+
+:param: data_path - path to files, defaults to the `gwp/data`
+
+:return: dict with scenario names as keys and paths to
+          data files as values</code></pre>
 
 </div>
 
@@ -96,12 +99,15 @@ nb_path: "00_core.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="calc_temp_increase" class="doc_header"><code>calc_temp_increase</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L42" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>calc_temp_increase</code>()</p>
+<h4 id="calc_temp_increase" class="doc_header"><code>calc_temp_increase</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L43" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>calc_temp_increase</code>()</p>
 </blockquote>
-<p>Calculate temperature increase caused by Methane only</p>
-<p>This uses FaiR: <a href="https://github.com/OMS-NetZero/FAIR">https://github.com/OMS-NetZero/FAIR</a></p>
-<p>Returns a pandas DataFrame with columns RCP 2.6, RCP 4.5, RCP 6, RCP 8.5
-and rows with yearly data from 1765 to 2500.</p>
+
+<pre><code>Calculate temperature increase caused by Methane only
+
+This uses FaiR: https://github.com/OMS-NetZero/FAIR
+
+Returns a pandas DataFrame with columns RCP 2.6, RCP 4.5, RCP 6, RCP 8.5
+and rows with yearly data from 1765 to 2500.</code></pre>
 
 </div>
 
@@ -148,15 +154,18 @@ and rows with yearly data from 1765 to 2500.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="calc_gwpstar_emissions" class="doc_header"><code>calc_gwpstar_emissions</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L69" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>calc_gwpstar_emissions</code>(<strong><code>emissons</code></strong>, <strong><code>gwp_h</code></strong>=<em><code>28</code></em>, <strong><code>h</code></strong>=<em><code>100</code></em>, <strong><code>delt</code></strong>=<em><code>20</code></em>)</p>
+<h4 id="calc_gwpstar_emissions" class="doc_header"><code>calc_gwpstar_emissions</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L70" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>calc_gwpstar_emissions</code>(<strong><code>emissons</code></strong>, <strong><code>gwp_h</code></strong>=<em><code>28</code></em>, <strong><code>h</code></strong>=<em><code>100</code></em>, <strong><code>delt</code></strong>=<em><code>20</code></em>)</p>
 </blockquote>
-<p>Calculation of GWP* from GWP</p>
-<p>Based on Allen et. al 2018</p>
-<p>:param: emissons pandas Series with emission values, index is year
-:param: gwp_h GWP for <code>h</code> years
+
+<pre><code>Calculation of GWP* from GWP
+
+Based on Allen et. al 2018
+
+:param: emissons pandas Series with emission values, index is year
+:param: gwp_h GWP for `h` years
 :param: h time in years
 :param: delt delta tine in years
-:return: GWP*</p>
+:return: GWP*</code></pre>
 
 </div>
 
@@ -186,12 +195,14 @@ and rows with yearly data from 1765 to 2500.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="read_data" class="doc_header"><code>read_data</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L87" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>read_data</code>(<strong><code>file_name</code></strong>, <strong><code>sep</code></strong>=<em><code>','</code></em>, <strong><code>skiprows</code></strong>=<em><code>36</code></em>, <strong><code>index_col</code></strong>=<em><code>0</code></em>, <strong><code>species</code></strong>=<em><code>'CH4'</code></em>, <strong><code>unit_converter</code></strong>=<em><code>0.001</code></em>)</p>
+<h4 id="read_data" class="doc_header"><code>read_data</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L88" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>read_data</code>(<strong><code>file_name</code></strong>, <strong><code>sep</code></strong>=<em><code>','</code></em>, <strong><code>skiprows</code></strong>=<em><code>36</code></em>, <strong><code>index_col</code></strong>=<em><code>0</code></em>, <strong><code>species</code></strong>=<em><code>'CH4'</code></em>, <strong><code>unit_converter</code></strong>=<em><code>0.001</code></em>)</p>
 </blockquote>
-<p>Read emssion data from a csv file.</p>
-<p>Per default reads Methane data from a file with the format of the
-files in <code>igwp/data</code>.
-These files are from FaiR: <a href="https://github.com/OMS-NetZero/FAIR">https://github.com/OMS-NetZero/FAIR</a></p>
+
+<pre><code>Read emssion data from a csv file.
+
+Per default reads Methane data from a file with the format of the
+files in `igwp/data`.
+These files are from FaiR: https://github.com/OMS-NetZero/FAIR</code></pre>
 
 </div>
 
@@ -221,9 +232,10 @@ These files are from FaiR: <a href="https://github.com/OMS-NetZero/FAIR">https:/
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="make_gwps" class="doc_header"><code>make_gwps</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L100" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_gwps</code>(<strong><code>file_name</code></strong>, <strong><code>start_year</code></strong>=<em><code>1765</code></em>, <strong><code>end_year</code></strong>=<em><code>2500</code></em>, <strong><code>base_year</code></strong>=<em><code>1765</code></em>)</p>
+<h4 id="make_gwps" class="doc_header"><code>make_gwps</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L101" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_gwps</code>(<strong><code>file_name</code></strong>, <strong><code>start_year</code></strong>=<em><code>1765</code></em>, <strong><code>end_year</code></strong>=<em><code>2500</code></em>, <strong><code>base_year</code></strong>=<em><code>1765</code></em>)</p>
 </blockquote>
-<p>Compute GWP_100, GWP*_100.</p>
+
+<pre><code>Compute GWP_100, GWP*_100.</code></pre>
 
 </div>
 
@@ -253,9 +265,10 @@ These files are from FaiR: <a href="https://github.com/OMS-NetZero/FAIR">https:/
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="make_gwps_improved" class="doc_header"><code>make_gwps_improved</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L115" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_gwps_improved</code>(<strong><code>file_name</code></strong>, <strong><code>start_year</code></strong>=<em><code>1765</code></em>, <strong><code>end_year</code></strong>=<em><code>2500</code></em>, <strong><code>base_year</code></strong>=<em><code>1765</code></em>, <strong><code>r</code></strong>=<em><code>0.75</code></em>, <strong><code>s</code></strong>=<em><code>0.25</code></em>)</p>
+<h4 id="make_gwps_improved" class="doc_header"><code>make_gwps_improved</code><a href="https://github.com/hydrocomputing/igwp/tree/master/igwp/core.py#L116" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>make_gwps_improved</code>(<strong><code>file_name</code></strong>, <strong><code>start_year</code></strong>=<em><code>1765</code></em>, <strong><code>end_year</code></strong>=<em><code>2500</code></em>, <strong><code>base_year</code></strong>=<em><code>1765</code></em>, <strong><code>r</code></strong>=<em><code>0.75</code></em>, <strong><code>s</code></strong>=<em><code>0.25</code></em>)</p>
 </blockquote>
-<p>Compute GWP_100, GWP*_100, and IGWP_100.</p>
+
+<pre><code>Compute GWP_100, GWP*_100, and IGWP_100.</code></pre>
 
 </div>
 

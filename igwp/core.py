@@ -20,7 +20,8 @@ def get_emission_data_paths(data_path=None):
     """Get paths for emisson at file.
 
     :param: data_path - path to files, defaults to the `gwp/data`
-    :returns: dict with scenario names as keys and paths to
+
+    :return: dict with scenario names as keys and paths to
               data files as values
     """
     if not data_path:
@@ -141,7 +142,6 @@ def plot_one(ax, name, path, make_df, temp_increases):
     temp_increases[start_year:end_year].plot(ax=ax2, color='black', style='--',
                                              label='temperature increase [K]')
     return ax1, ax2
-
 
 # Cell
 
