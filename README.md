@@ -1,6 +1,15 @@
 # igwp - Improved Global Warming Potential (IGWP)
-> The Global Warming Potential (GWP) is a commonly used, simple model to "normalize" the warming impact of different climate pollutants to $CO_2$ equivalents. This approach works well for long-lived climate pollutions (LLCPs) but fails for short-lived climate pollutions (SLCPs). The improved version of the GWP accounst much better for effect of SLCPs.
+> A Global Warming Potential model with improved support for short-lived climate pollutions (SLCPs).
 
+
+## Why an Improved Version
+
+The Global Warming Potential (GWP) is a commonly used, simple model
+to "normalize" the warming impact of different climate pollutants to 
+$CO_2$ equivalents. This approach works well for long-lived climate 
+pollutions (LLCPs) but fails for short-lived climate pollutions (SLCPs).
+The improved version of the GWP accounst much better for effect of
+SLCPs.
 
 ## Install
 
